@@ -1,4 +1,5 @@
--------  windows -------------------
+
+-------  windows -------------------
 
 
 https://docs.conda.io/en/latest/miniconda.html
@@ -49,32 +50,32 @@ python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU')
 ----- linux -----------
 
 ===setup WIFI
-===use only lower case for user 
+===use only lower case for user
 
- 
+
 sudo apt update
 sudo apt upgrade
 sudo apt install git
 
-=== install nvidia drivers via GUI only ! 
-=== download  conda installer
+=== install nvidia drivers via GUI only !
+=== download  conda installer
 cd Downloads/
 bash Miniconda3-latest-Linux-x86_64.sh
 export PATH=’/home/dmitriy/miniconda3/bin:$PATH’
- 
-hostname-I   # see IP
+
+hostname-I   # see IP
 pip install jupyterlab
 sudo apt install filezilla
- 
-## http://192.168.1.254/ 
+
+## http://192.168.1.254/
 sudo apt install xrdp # default port 3389
 sudo apt-get install xfce4
 sudo adduser remote
 sudo usermod -aG sudo remote
-sudo nano /home/remote/.xsession # open editor and put here:   xfce4-session
+sudo nano /home/remote/.xsession # open editor and put here:   xfce4-session
 systemctl start xrdp
 systemctl enable xrdp
- 
+
 sudo apt install openssh-server
 sudo systemctl status ssh
 #sudo ufw allow ssh
@@ -82,20 +83,21 @@ sudo systemctl status ssh
 #sudo ufw reload
 #sudo ufw status verbose
 
-#laptop - session 1  NOT WORKING - RUN JUPYTER L-O-C-A-L-L-Y 
+#laptop - session 1  NOT WORKING - RUN JUPYTER L-O-C-A-L-L-Y
 #ssh remote@192.168.1.75
 #conda activate cuda3
 #jupyter lab --no-browser --port 8897
 #laptop - session 2
 ssh -L localhost:8888:localhost:8888 remote@95.165.168.59
 
-# sudo nano /etc/xrdp/xrdp.ini  # set max_bpp=128 
+# sudo nano /etc/xrdp/xrdp.ini  # set max_bpp=128
 # https://superuser.com/questions/1539900/slow-ubuntu-remote-desktop-using-xrdp
 http://localhost:8888/lab?token=0e896ed9cc6ff019f60db02ccf1e9075ec55b9956cde7a3b
 
 
 ------------linux 2------------------------------
-LOOKS LIKE NVIDIA DRIVERS NOT REQUIRED FOR CUDA
+DISABLE THE DAMNED SECURE BOOT — OTHERWISE CUDA AVAILABLE IS ALWAYS FALSE !! 
+LOOKS LIKE NVIDIA DRIVERS needs to be installed via DRIVER MANAGER, terminal to complicated to use 
 
 #https://www.rootisgod.com/2020/Using-RDP-With-Linux-Mint-20-Cinnamon/
 
@@ -108,5 +110,8 @@ mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
+
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
 
 https://help.ubuntu.ru/wiki/apache_%D0%B8_https
